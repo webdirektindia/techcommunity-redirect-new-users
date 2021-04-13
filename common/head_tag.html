@@ -1,0 +1,20 @@
+<script type="text/discourse-plugin" version="0.8">
+
+  //Get the current User and return (break the execution) if User is not first time visitor.
+  const user = api.getCurrentUser();
+  if (!user || user.read_first_notification || user.enforcedSecondFactor) {
+    return;
+  }
+
+  //Below code will execute after rendering "header-notifications" widget
+  api.decorateWidget("header-notifications:after", helper => {
+    
+    //If the User if First-time visitor then he will be redirect to Groups page.
+    if (!helper.attrs.active && helper.attrs.ringBackdrop) {
+        const DiscourseURL = require("discourse/lib/url").default;      
+        DiscourseURL.routeTo("/g");
+        return "";
+    }
+    
+  });
+</script>
