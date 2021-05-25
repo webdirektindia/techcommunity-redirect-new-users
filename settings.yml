@@ -1,0 +1,9 @@
+Topic_slug:
+  default: "welcome-to-the-tech-community"
+  type: string 
+  description: "Specify the slug of welcome topic"
+
+Topic_id:
+  default: "240462"
+  type: string 
+  description: "Specify the id of welcome topic" 

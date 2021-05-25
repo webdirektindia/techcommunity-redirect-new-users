@@ -1,0 +1,9 @@
+{{#unless (eq (theme-setting 'Topic_slug') "")}}
+{{#unless (eq (theme-setting 'Topic_id') "")}}
+<div class="welcome-topic-btn">
+    {{#link-to "topic" (theme-setting 'Topic_slug') (theme-setting 'Topic_id') class="btn btn-primary"}} 
+            Proceed To Tech Community
+    {{/link-to}}
+</div>
+{{/unless}}
+{{/unless}}

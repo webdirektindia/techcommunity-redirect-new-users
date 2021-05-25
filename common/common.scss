@@ -1,0 +1,168 @@
+body.groups-page{
+    // Header navigation changes on Groups page [Added By: Saurabh, Date: 11/05/2021]
+    .d-header {
+        // Set header background to grey on Groups page.
+        background-color: #e1e1e1 !important;
+        
+        // Reduce the opacity of the header logo on Groups page.
+        #site-logo{
+            opacity: 0.5;
+        }
+        
+        // Hide all the elements in the header navigation except Logo and Current User icon on Groups page.
+        .title div, .header-buttons, ul.d-header-icons li:not(#current-user){
+            display: none !important;
+        }
+    }
+    
+    // Hide the group filter section.
+    .groups-header{
+        .groups-header-filters{
+            .groups-header-filters-name, .groups-header-filters-type{
+                display: none !important;
+            }
+        }
+    }
+
+    // Modified the below Selector property to change the grid layout and background of the group-boxes and also Join buttons [Modified By: Saurabh, Date: 11/05/2021]
+    // Make the Join button wider and increate the font within the group box on groups page.
+    .groups-boxes {
+        @include breakpoint("tablet") {
+              grid-template-columns: repeat(3, 32%) !important;
+              grid-column-gap: 2%;
+            }
+            @include breakpoint("mobile-large") {
+              grid-template-columns: 100% !important;
+            }
+        .group-box {
+            // Set the background color for group-boxes [Added By: Saurabh, Date: 11/05/2021]
+            background: #f2f2ea;
+            .group-box-inner{
+                // Set the same color for the group-user-count as that of d-icon-user [Added By: Saurabh, Date: 11/05/2021]
+                .group-user-count {
+                    color: var(--primary-medium);
+                }
+                // Set the Green background color and text to White for the join buttons [Added By: Saurabh, Date: 11/05/2021]
+                .group-index-join{
+                    font-size: 1.5em;
+                    width: 100%;
+                    background: var(--success);
+                    color: #ffffff;
+                    .d-icon.d-icon-user-plus{
+                        color: #ffffff;
+                    }
+                }
+                .group-index-join:hover{
+                    background: var(--success-hover);
+                }
+            }
+        }
+    }   
+    .after-groups-index-container-outlet.techcommunity-welcome-link-btn{
+        display: grid;
+        grid-template-columns: repeat(3, 32.4%);
+        grid-column-gap: 1.333%;
+        grid-row-gap: 1em;
+        @include breakpoint("tablet") {
+          grid-template-columns: repeat(3, 32%);
+          grid-column-gap: 2%;
+        }
+        @include breakpoint("mobile-large") {
+          grid-template-columns: 100%;
+        }
+    }
+    // Styling for the "Tech community" button on the groups page.
+    .welcome-topic-btn {
+        grid-column-start: 3;
+        @include breakpoint("tablet") {
+          grid-column-start: 3;
+        }
+        @include breakpoint("mobile-large") {
+          grid-column-start: 1;
+        }
+        .btn {  
+            width: 100%;
+            min-width: 355px;
+            margin: 15px 0px;
+            float: right;
+            font-size: 1.5em;
+            @include breakpoint("tablet") {
+              font-size: 1.5em;
+              min-width: 355px;
+              grid-column-start: 3;
+            }
+            @include breakpoint("mobile-large") {
+              min-width: auto;
+              padding: 1em 1em;
+              font-size: 1.3em;
+            }
+        }
+    }
+    // Adding tick symbol before the "Proceed To Tech community" button [Added By: Saurabh, Date: 11/05/2021]
+    .welcome-topic-btn .btn::before {
+        content: "\2713";
+        margin: 0px 5px 0px 0px;
+        padding-bottom: 2px;
+        font-size: 1em;
+    }
+}
+
+// Hiding downloads group for non-staff members.
+// Modified to hide moderators group [Added By: Saurabh, Date: 11/05/2021]
+body.groups-page:not(.staff) {
+    .groups-boxes{
+        .group-box.Downloads, .group-box.moderators{
+            display: none;
+        } 
+    }
+}
+
+// CSS for modifying Downloads group page [Added By: Saurabh, Date: 07/05/2021]
+// Modified to make buttons bigger on all the group details page [Modified By: Saurabh, Date: 25/05/2021]
+body{
+    //Having a bigger request/join buttons on all the group details page.
+    .group{
+        .group-details-container{
+            .group-details-button{
+                @include breakpoint("mobile-large") {
+                    width: 100%;
+                }
+                @include breakpoint("tablet") {
+                    button {
+                        margin-top: 0.5em;
+                    }
+                }
+                button.group-index-request, button.group-index-join{
+                        padding-left: 2em;
+                        padding-right: 2em;
+                        text-align: center;
+                        font-size: 1.7em;
+                        color: #ffffff;
+                        background: var(--success);
+                        margin-top: 0.3em;
+                        @include breakpoint("tablet") {
+                            flex: 0 1 100%;
+                            margin-right: 0px;
+                        }
+                    .d-icon.d-icon-user-plus{
+                        color: #ffffff;
+                    }
+                }
+                button.group-index-request:hover, button.group-index-join:hover{
+                        background: var(--success-hover);
+                }
+            }
+        }
+    }
+    // If the User is non-staff then hide the Group navigation and User content on the Downloads group page.
+    // Modified to hide the Group navigation and User content on all the Group details page [Modified By: Saurabh, Date: 25/05/2021]
+    &:not(.staff){
+        .group{
+            .user-content-wrapper{
+                .user-primary-navigation, .user-content{
+                    display: none !important;
+                }
+            }
+        }
+    }
+}
