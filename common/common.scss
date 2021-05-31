@@ -27,6 +27,8 @@ body.groups-page{
     // Modified the below Selector property to change the grid layout and background of the group-boxes and also Join buttons [Modified By: Saurabh, Date: 11/05/2021]
     // Make the Join button wider and increate the font within the group box on groups page.
     .groups-boxes {
+        grid-template-columns: repeat(3, 32.4%);
+        
         @include breakpoint("tablet") {
               grid-template-columns: repeat(3, 32%) !important;
               grid-column-gap: 2%;
