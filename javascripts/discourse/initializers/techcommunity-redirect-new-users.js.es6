@@ -36,7 +36,7 @@ export default {
             },
             actions: {
                 showRequestMembershipForm() {
-                  //Called super class createAccount action to grab the changes in discourse core. [09-04-2021]
+                  //Called super class showRequestMembershipForm action to grab the changes in discourse core.
                   this._super(...arguments);
                   // Our custom code for Auto-fill User information for the membership request textarea field for the Downloads group.
                   if (this.currentUser && this.model.name && this.model.name.toLowerCase() == "downloads") {
