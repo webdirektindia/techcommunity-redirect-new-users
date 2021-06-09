@@ -158,8 +158,9 @@ body{
     }
     // If the User is non-staff then hide the Group navigation and User content on the Downloads group page.
     // Modified to hide the Group navigation and User content on all the Group details page [Modified By: Saurabh, Date: 25/05/2021]
+    // Modified to hide the Group navigation and User content only on the Downloads Group details page [Modified By: Saurabh, Date: 09/06/2021]
     &:not(.staff){
-        .group{
+        .group.Downloads{
             .user-content-wrapper{
                 .user-primary-navigation, .user-content{
                     display: none !important;
