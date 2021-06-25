@@ -169,3 +169,25 @@ body{
         }
     }
 }
+
+//CSS [Added By: Saurabh, Date: 24/06/2021]
+// To make Submit button text bigger for the Request to downloads group dialog 
+// To display handle membership request link as button on topic page
+body{
+    .d-modal.request-group-membership-form-modal {
+        .modal-footer button{
+            font-size: 2rem;
+        }
+    }
+    
+    //Handle membership request link
+    .topic-body .group-request a{
+        text-transform: uppercase;
+        padding: 1em 2em;
+        border: 1px solid;
+        line-height: 5em;
+        font-weight: bold;
+        font-size: 1.1em;
+        background: #fff;
+    }
+}
