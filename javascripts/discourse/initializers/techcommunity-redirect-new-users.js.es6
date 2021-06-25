@@ -85,19 +85,37 @@ export default {
                             // Province
                             var currentuserProvince = "";
                             if(provinceFieldObj){ currentuserProvince = groupMembershipObject.checkNull(String(json.user.user_fields[provinceFieldObj.id])); }
-
-                            groupMembershipObject.model.set("membership_request_template", "I'd like to download Software AG free trials" 
-                                                      + ((currentuserFirstName == '') ? '' : '\n' + currentuserFirstName)
-                                                      + ((currentuserLastName == '') ? '' : '\n' + currentuserLastName)
-                                                      + ((currentuserEmail == '') ? '' : '\n' + currentuserEmail)
-                                                      + ((currentuserCountry == '') ? '' : '\n' + currentuserCountry)
-                                                      + ((currentuserCompany == '') ? '' : '\n' + currentuserCompany));
+                            
+                            //Setting membership_request_template value to auto-generated User details. This will display in the textarea of Request to Join Downloads dialog.
+                            //Modified the membership_request_template value to display User details in well formated. [Modified by: Saurabh; Date: 24/06/2021]
+                            groupMembershipObject.model.set("membership_request_template", "I’d like to download Software AG free trials from Tech Community, please find the details below:" 
+                                                      + '\nFirst name: ' + ((currentuserFirstName == '') ? '-' : currentuserFirstName)
+                                                      + '\nLast name: ' + ((currentuserLastName == '') ? '-' : currentuserLastName)
+                                                      + '\nEmail: ' + ((currentuserEmail == '') ? '-' : currentuserEmail)
+                                                      + '\nCountry: ' + ((currentuserCountry == '') ? '-' : currentuserCountry)
+                                                      + '\nCompany: ' + ((currentuserCompany == '') ? '-' : currentuserCompany));
                         }
                       });
                     }
                   }
                 },
             }
+        });
+        // Override the didInsertElement method of d-modal-body component to hide the Label and Textarea for the Request to downloads group dialog [Added by: Saurabh; Date: 24/06/2021]
+        api.modifyClass("component:d-modal-body", {
+            didInsertElement() {
+              //Called super class didInsertElement method to grab the changes in discourse core.
+              this._super(...arguments);
+              
+              // Our custom code for hiding Label and Textarea for the Request to downloads group dialog
+              //If rendered dialog is for request-group-membership-form 
+              if(this._target && this._target.get('modal') && this._target.get('modal').name == 'request-group-membership-form'){
+                //If rendered request-group-membership-form dialog is for Downloads group then hide the label and textarea. 
+                if(this._target.get('model') && this._target.get('model').name =='Downloads'){
+                  $(".d-modal.request-group-membership-form-modal .control-group").hide();  
+                }
+              } 
+            }  
         });
     });
   },
