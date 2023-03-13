@@ -9,9 +9,9 @@ export default {
             const firstNotificationTippy = document.querySelector(".d-header .d-header-icons + div[data-tippy-root]");
             if(firstNotificationTippy) {
               if(/^\/g$/.test(url) || /^\/groups$/.test(url)){
-                firstNotificationTippy.style.transform = "translate(-6px, 47px)";
+                firstNotificationTippy.style.transform = "translate(38px, 47px)";
               } else {
-                firstNotificationTippy.style.transform = "translate(-119px, 47px)";
+                firstNotificationTippy.style.transform = "translate(-99px, 47px)";
               }   
             } 
         });
@@ -28,7 +28,7 @@ export default {
               return "";
             }
            
-            const seenUserTips = user.seen_popups || [];
+            const seenUserTips = user.user_option.seen_popups || [];
             if (seenUserTips.includes(-1) || seenUserTips.includes(1)) {
               return;
             }
