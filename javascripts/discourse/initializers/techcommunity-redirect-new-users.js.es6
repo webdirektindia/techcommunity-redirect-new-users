@@ -6,14 +6,16 @@ export default {
   initialize() {
     withPluginApi("0.8", (api) => {      
         api.onPageChange((url) => {
-            const firstNotificationTippy = document.querySelector(".d-header .d-header-icons + div[data-tippy-root]");
-            if(firstNotificationTippy) {
-              if(/^\/g$/.test(url) || /^\/groups$/.test(url)){
-                firstNotificationTippy.style.transform = "translate(38px, 47px)";
-              } else {
-                firstNotificationTippy.style.transform = "translate(-99px, 47px)";
-              }   
-            } 
+          const firstNotificationTippy = document.querySelector(".d-header .d-header-icons + div[data-tippy-root]");
+          const firstNotificationTippyArrow = document.querySelector(".d-header .d-header-icons + div[data-tippy-root] .tippy-svg-arrow");
+          if(firstNotificationTippy) {
+            if(/^\/g$/.test(url) || /^\/groups$/.test(url)){
+            firstNotificationTippy.style.transform = "translate(-6px, 47px)";
+            } else {
+            firstNotificationTippy.style.transform = "translate(-119px, 47px)";
+            }   
+            firstNotificationTippyArrow.style.transform = "translate(326px, 0px)";
+          } 
         });
         //Below code will execute after rendering "header-notifications" widget. And if the User is first time visitor he will be redirected to the Goups page.
          api.decorateWidget("header-notifications:after", helper => {
