@@ -10,9 +10,9 @@ export default {
           const firstNotificationTippyArrow = document.querySelector(".d-header .d-header-icons + div[data-tippy-root] .tippy-svg-arrow");
           if(firstNotificationTippy) {
             if(/^\/g$/.test(url) || /^\/groups$/.test(url)){
-            firstNotificationTippy.style.transform = "translate(-6px, 47px)";
+            firstNotificationTippy.style.transform = "translate(-6px, 50px)";
             } else {
-            firstNotificationTippy.style.transform = "translate(-119px, 47px)";
+            firstNotificationTippy.style.transform = "translate(-119px, 50px)";
             }   
             firstNotificationTippyArrow.style.transform = "translate(326px, 0px)";
           } 
@@ -41,7 +41,7 @@ export default {
             } else {
               return "";
             }
-             
+            // If redirectToGroupPage{UserId} key is not present in the localStorade then do nothing.
             if(localStorage.getItem("redirectToGroupPage" + user.id)) {
               return;
             }
